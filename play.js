@@ -1,5 +1,6 @@
 const net = require("net");
-const connect = require('../snek-multiplayer/client.js')
+const { connect } = require("./client");
+const { setupInput } = require("./input");
 
 
 console.log("Connecting ...");
@@ -14,6 +15,7 @@ for (let i = 0, milS = 0; i < 10; i++, milS += 100) {
     connect(moves[Math.floor(Math.random() * 4)]);
   }, milS)
 }
+
 
 const handleUserInput = function (input) {
   if (input.keyCode === 67) {
@@ -31,5 +33,8 @@ const setupInput = function () {
 
   return stdin;
 };
+
+console.log("Connecting ...");
+connect();
 
 setupInput();
